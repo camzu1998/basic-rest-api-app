@@ -16,6 +16,11 @@ class CarApiTest extends TestCase
     {
         $response = $this->postJson(route('api.cars.store'), [
             'name' => 'Toyota',
+        ]);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        $response = $this->postJson(route('api.cars.store'), [
+            'name' => 'Toyota',
             'type' => 'big',
         ]);
 
